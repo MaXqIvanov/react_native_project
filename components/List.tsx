@@ -2,31 +2,39 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import ListItems from './ListItems'
+import Form from './Form'
 
 export default function List() {
-    const [list, setList] = useState<any[]>([{text:'buy a car'},{text:'sell any'}])
+    const [list, setList] = useState<any[]>([])
 
   return (
     <View style={styles.main_div_List}>
         <View style={styles.main_div_List_wrapper}>
             <Text style={styles.title_todo}>Список дел</Text>
-                <FlatList data={list} renderItem={({item})=>(
-                    <ListItems elem={item}/>
+           {list.length > 0 ? <FlatList style={styles.group_elems} data={list} renderItem={({item})=>(
+                    <ListItems list={list} setList={setList} key={item.index} elem={item}/>
                 )}/>
+            : <View style={styles.list_task_empty}><Text>Ваш список задач пуст</Text></View>
+            }
+            <Form list={list} setList={setList}/>
         </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-    todo_elem:{
-        borderWidth: 1,
-        borderColor: 'orange',
+    list_task_empty:{
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    main_div_List:{
+    group_elems:{
+      
+    },
+     main_div_List:{
         flex:1,
         backgroundColor: 'white',
-        alignItems:'center'
+        alignItems:'center',
     },
     main_div_List_wrapper:{
         height:"100%",

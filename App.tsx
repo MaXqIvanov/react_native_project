@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, Alert,Image } from 'react-native';
 import MainPages from './pages/MainPages';
+import MainStack from './navigate'
 
 export default function App() {
   
   return (
     <View style={s.container}>
       <View style={s.container_wrap}>
-        <MainPages />
+        <MainStack />
       </View>
     </View>
   );

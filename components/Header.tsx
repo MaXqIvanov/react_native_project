@@ -14,7 +14,7 @@ export default function Header() {
 const styles = StyleSheet.create({
     header_view:{
         backgroundColor:'white',
-        height: 40,
+        height: 10,
         width: '100%',
         justifyContent: 'center',
         paddingLeft: 10,
