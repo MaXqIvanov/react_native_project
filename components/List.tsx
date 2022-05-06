@@ -1,12 +1,30 @@
 
 import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ListItems from './ListItems'
 import Form from './Form'
+import AsyncStorage  from '@react-native-async-storage/async-storage'
 
 export default function List() {
     const [list, setList] = useState<any[]>([])
+    
+    useEffect(() => {
 
+        const storeData = async () => {
+            try {
+              await AsyncStorage.setItem(
+                'data1',
+                JSON.stringify(list)
+              );
+            } catch (error) {
+              // Error saving data
+              console.log("this is problem " + error); 
+            }
+          };
+          storeData()
+    
+    }, [list])
+    
   return (
     <View style={styles.main_div_List}>
         <View style={styles.main_div_List_wrapper}>

@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     top: 0,
     left:0,
     height: '100%',
-    width: 25
+    width: 25,
+    zIndex: 1,
   },
   buttonRigth:{
       position:'absolute',
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
       right:0,
       height: '100%',
       width: 25,
+      zIndex: 1,
     },
     MainPages:{
         flex: 1,
