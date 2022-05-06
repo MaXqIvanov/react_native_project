@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function ListItems(props:any) {
     const deleteTask = ()=>{
-      props.setList(props.list.filter((elem:any)=> elem.index != props.elem.index))
+      props.setList(props.list.filter((elem:any)=> elem.key !== props.elem.key))
     }
   return (
     <View style={styles.main_block_ListItems}> 

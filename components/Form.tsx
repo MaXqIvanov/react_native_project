@@ -1,6 +1,7 @@
 
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
+import AsyncStorage  from '@react-native-async-storage/async-storage'
 
 export default function Form(props:any) {
     const [text, setText] = useState<any>('')
@@ -11,7 +12,6 @@ export default function Form(props:any) {
     const addElem = ()=>{
         if(text.length > 0 && text.length < 40){
             props.setList([...props.list,{text:`${text}`, key:(props.list.length+1)}])
-            
         }else{
             alert("Текст, который вы вводите не должен быть пустым или содержать более 40 символов")
         }

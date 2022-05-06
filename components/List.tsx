@@ -9,7 +9,21 @@ export default function List() {
     const [list, setList] = useState<any[]>([])
     
     useEffect(() => {
+        const retrieveData = async () => {
+            try {
+              const value = await AsyncStorage.getItem('data1');
+              if (value !== null) {
+                // We have data!!
+                setList(JSON.parse(value))
+              }
+            } catch (error) {
+              // Error retrieving data
+            }
+          };
+          retrieveData()
+    }, [])
 
+    useEffect(() => {
         const storeData = async () => {
             try {
               await AsyncStorage.setItem(
@@ -22,8 +36,8 @@ export default function List() {
             }
           };
           storeData()
-    
     }, [list])
+    
     
   return (
     <View style={styles.main_div_List}>
