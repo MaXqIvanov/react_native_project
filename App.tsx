@@ -23,14 +23,4 @@ const s = StyleSheet.create({
     height: 100+'%',
     width: 100+'%',
   },
-  text:{
-    width: 100+'%',
-    color: 'white',
-    textAlign: 'center'
-  },
-  mainButton:{
-      flex: 1,
-      justifyContent: 'flex-end',
-      width: 100+'%',
-  }
 });

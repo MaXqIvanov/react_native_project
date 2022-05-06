@@ -19,8 +19,6 @@ export default function Contacts() {
     };
     retrieveData()
   }, [])
-  console.log(contactsData);
-  
   
 
   return (

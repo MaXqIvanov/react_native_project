@@ -17,9 +17,9 @@ export default function Navigate(){
                             options={{title: 'Главная'}}
                         />
                         <Stack.Screen 
-                            name="Contact"
+                            name="CompleteTask"
                             component={Contacts}
-                            options={{title: 'Контакты'}}
+                            options={{title: 'выполненные задачи'}}
                         />
                     </Stack.Navigator>
         </NavigationContainer>

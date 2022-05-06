@@ -1,11 +1,13 @@
 
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
 import React, { useState } from 'react'
-import AsyncStorage  from '@react-native-async-storage/async-storage'
+import  Ionicons  from '@expo/vector-icons/Ionicons'; 
+
+type Ionicons = React.ComponentProps<typeof Ionicons>['name'];
+const iconName: Ionicons =  'add-circle-outline'
 
 export default function Form(props:any) {
     const [text, setText] = useState<any>('')
-
     const onChange = (data:any)=>{
         setText(data)
     }
@@ -17,23 +19,37 @@ export default function Form(props:any) {
         }
      
     }
+
   return (
     <View style={styles.form_view}>
       <TextInput style={styles.TextInputAdd} placeholder='введите вашу задачу...' onChangeText={onChange}/>
-      <Button color={"black"} onPress={()=>addElem()} title='Добавить' />
+      <View style={styles.ButtonAdd}>
+         <Ionicons onPress={()=>addElem()} name="add-circle-outline" size={36} color="black" />
+      </View>
+
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+    ButtonAdd:{
+        width: '10%',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     TextInputAdd:{
         padding: 5,
+        width:'90%',
+        borderBottomWidth: 2,
     },
     text_footer_form:{
         textAlign:'center',
     },
     form_view:{
-        borderWidth: 1,
         marginBottom: 5,
+        flexDirection: 'row',
     }
 })
+
