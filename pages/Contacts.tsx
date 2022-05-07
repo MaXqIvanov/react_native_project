@@ -1,38 +1,80 @@
 
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { TouchableHighlight , FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import AsyncStorage  from '@react-native-async-storage/async-storage'
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function Contacts() {
-  const [contactsData, setContactsData] = useState<any>()
-  useEffect(() => {
-    const retrieveData = async () => {
-      try {
-        const value = await AsyncStorage.getItem('data1');
-        if (value !== null) {
-          // We have data!!
-          setContactsData(JSON.parse(value))
-        }
-      } catch (error) {
-        // Error retrieving data
+  const [contactsData, setContactsData] = useState<any[]>([])
+  
+  
+  const retrieveData = async () => {
+    try {
+      const value:any = await AsyncStorage.getItem('deleteElems');
+      
+      if (value !== null) {
+        // We have data!!
+        setContactsData(JSON.parse(value))
       }
-    };
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+  useEffect(() => {
     retrieveData()
   }, [])
-  
 
+    const RemoveAll =  async()=>{
+        try {
+          await AsyncStorage.setItem(
+            'deleteElems',
+            JSON.stringify([])
+          );
+          setContactsData([])
+        } catch (error) {
+          // Error saving data
+          console.log("this is problem " + error); 
+        }
+      };
+    
+    
+  
   return (
-    <View>   
-      <FlatList data={contactsData} renderItem={({item})=>(<Text style={styles.textColor}>{item.text}</Text>)}/>
+    
+    <View style={styles.main_block_contacts}>   
+      {contactsData.length > 0? 
+      <FlatList style={styles.main_block_contacts} data={contactsData} renderItem={({item})=><View style={styles.block_main_text}><Text style={styles.textColor}>{item.text}</Text><AntDesign name="check" size={24} color="green" /></View>}/>
+        :<Text style={styles.textColorEmpty}>Ваш список выполненных задач пуст</Text>
+    }
+      <View style={styles.button_bottom}><TouchableHighlight onPress={()=> RemoveAll()} ><Text style={styles.textColor}>Очистить историю</Text></TouchableHighlight></View>
     </View>
+  
+ 
   )
 }
 
 const styles = StyleSheet.create({
+  button_bottom:{
+    marginBottom: 5,
+  },
+  block_main_text:{
+    flexDirection: 'row'
+  },
+  main_block_contacts:{
+    flex:1,
+  },
+ 
+  textColorEmpty:{
+    color: 'white',
+    textAlign: 'center',
+    height: '90%',
+    textAlignVertical: 'center'
+  },
   textColor:{
     color: 'white',
-    textDecorationLine: 'line-through',
     fontSize: 20,
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'black',
+    width: '90%',
   }
 })

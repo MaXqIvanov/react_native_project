@@ -15,12 +15,16 @@ export default function Navigate(){
                         <Stack.Screen 
                             name="MainPages"
                             component={MainPages}
-                            options={{title: 'Главная'}}
+                            options={{title: 'Главная' ,  headerStyle: {
+                                backgroundColor: '#e7305b'
+                             } }}
                         />
                         <Stack.Screen 
                             name="CompleteTask"
                             component={Contacts}
-                            options={{title: 'выполненные задачи'}}
+                            options={{title: 'выполненные задачи',  headerStyle: {
+                                backgroundColor: '#e7305b'
+                             }}}
                         />
                     </Stack.Navigator>
         </NavigationContainer>
