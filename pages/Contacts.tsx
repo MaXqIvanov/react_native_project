@@ -46,7 +46,7 @@ export default function Contacts() {
       <FlatList style={styles.main_block_contacts} data={contactsData} renderItem={({item})=><View style={styles.block_main_text}><Text style={styles.textColor}>{item.text}</Text><AntDesign name="check" size={24} color="green" /></View>}/>
         :<Text style={styles.textColorEmpty}>Ваш список выполненных задач пуст</Text>
     }
-      <View style={styles.button_bottom}><TouchableHighlight onPress={()=> RemoveAll()} ><Text style={styles.textColor}>Очистить историю</Text></TouchableHighlight></View>
+      <View style={styles.button_bottom}><TouchableHighlight onPress={()=> RemoveAll()} ><Text style={styles.textColorRemove}>Очистить историю</Text></TouchableHighlight></View>
     </View>
   
  
@@ -76,5 +76,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'black',
     width: '90%',
-  }
+  },
+  textColorRemove:{
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+    backgroundColor: 'black',
+    width: '100%',
+  },
 })
