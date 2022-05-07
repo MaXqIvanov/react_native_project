@@ -1,6 +1,7 @@
 
 import { StyleSheet, Text, View, TouchableHighlight, Image } from 'react-native'
 import React from 'react'
+import { EvilIcons } from '@expo/vector-icons'; 
 
 export default function ListItems(props:any) {
     const deleteTask = ()=>{
@@ -13,7 +14,7 @@ export default function ListItems(props:any) {
         
         </TouchableHighlight>
         <View onTouchStart={()=>deleteTask()} style={styles.view_DeleteMessage}>
-           <Image  style={styles.deleteMessage} source={require('../assets/close.png')} />
+         <EvilIcons name="close" size={30} color="white" />
         </View>
     </View>
   )
@@ -41,11 +42,11 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         marginTop: 20,
         borderRadius: 5,
-        backgroundColor: "#cedbda",
-        padding: 7
+        backgroundColor: "white",
+        padding: 7,
     },
     listItemsText:{
-        color:'#707373',
+        color:'black',
         fontSize: 20,
         textAlign:'center',
     }

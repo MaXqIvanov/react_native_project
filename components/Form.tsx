@@ -22,9 +22,9 @@ export default function Form(props:any) {
 
   return (
     <View style={styles.form_view}>
-      <TextInput style={styles.TextInputAdd} placeholder='введите вашу задачу...' onChangeText={onChange}/>
+      <TextInput placeholderTextColor="#fff" style={styles.TextInputAdd} placeholder='введите вашу задачу...' onChangeText={onChange}/>
       <View style={styles.ButtonAdd}>
-         <Ionicons onPress={()=>addElem()} name="add-circle-outline" size={36} color="black" />
+         <Ionicons onPress={()=>addElem()} name="add-circle-outline" size={36} color="white" />
       </View>
 
 
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
         padding: 5,
         width:'90%',
         borderBottomWidth: 2,
+        borderColor: 'white',
+        color: 'white'
     },
     text_footer_form:{
         textAlign:'center',

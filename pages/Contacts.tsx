@@ -23,9 +23,16 @@ export default function Contacts() {
 
   return (
     <View>   
-      <FlatList data={contactsData} renderItem={({item})=>(<Text>{item.text}</Text>)}/>
+      <FlatList data={contactsData} renderItem={({item})=>(<Text style={styles.textColor}>{item.text}</Text>)}/>
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  textColor:{
+    color: 'white',
+    textDecorationLine: 'line-through',
+    fontSize: 20,
+    textAlign: 'center'
+  }
+})

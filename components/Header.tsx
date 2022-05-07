@@ -13,7 +13,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
     header_view:{
-        backgroundColor:'white',
+        backgroundColor:'black',
         height: 10,
         width: '100%',
         justifyContent: 'center',
